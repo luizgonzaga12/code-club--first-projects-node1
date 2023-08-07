@@ -1,10 +1,15 @@
 
-const express = require ("express")
-const uuid = require('uuid')
-const port = 3000
-const app = express () 
+import express from "express";
+import { v4 } from "uuid";   /*Obs */
+import cors from "cors";
 
-app.use(express.json())
+const port = 3001;
+const app = express () ;
+app.use(express.json());
+app.use(cors()) 
+
+/* app.use(cors()) - Este exemplo qualquer pessoa pode ter acesso, para uma aplicaçao particular
+ é importante os sites ou enderenços que terá acesso a essa API  */
 
 /*
 - query params => meusite.com/users?nome=rodolfo&age=28 // FILTROS
@@ -33,10 +38,6 @@ request.userId = id
 next ()
 
 }
-
-
-
-
 
 
 app.get('/users', (request, response) => {
@@ -86,5 +87,5 @@ users.splice(index,1)
 
 
 app.listen(port, () => {
-    console.log ('Server started on port 3000')
+    console.log ('Server started on port 3001')
 })
